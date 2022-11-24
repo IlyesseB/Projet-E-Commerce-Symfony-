@@ -37,7 +37,12 @@
             <div class="col-6">
                 <p>{{ product.description }}</p>
                 <p>Catégorie : {{ product.categories.name }}</p>
+                <p>Stock : {{ product.stock }}</p>
+                <p>Poids : {{ product.poid }} KG</p>
                 <p>Prix : {{ product.price / 100 }} €</p>
+                {% if product.stock == 1 %}
+                <p class="text-danger"><u><b>C’est votre dernière chance avant rupture de stock</b></u></p>
+                {% endif %}
                 {% if product.stock > 0 %}
                     <a href="#" class="btn btn-success">Ajouter au panier</a>
                 {% else %}

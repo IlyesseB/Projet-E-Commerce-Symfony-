@@ -26,6 +26,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private $email;
+    
+    #[ORM\Column(type: 'string', length: 20)]
+    private $phone;
 
     #[ORM\Column(type: 'json')]
     private $roles = [];
@@ -51,8 +54,8 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $is_verified = false;
 
-    #[ORM\Column(type: 'string', length: 100)]
-    private $resetToken;
+    /*#[ORM\Column(type: 'string', length: 100)]
+    private $resetToken;*/
 
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Orders::class)]
     private $orders;
@@ -76,6 +79,18 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone)
+    {
+        $this->phone = $phone;
 
         return $this;
     }

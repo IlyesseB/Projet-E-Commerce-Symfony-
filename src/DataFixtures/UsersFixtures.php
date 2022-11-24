@@ -20,11 +20,13 @@ class UsersFixtures extends Fixture
     {
         $admin = new Users();
         $admin->setEmail('admin@demo.fr');
+        $admin->setPhone('0789745467');
         $admin->setLastname('Gambier');
         $admin->setFirstname('Benoit');
         $admin->setAddress('12 rue du port');
         $admin->setZipcode('75001');
         $admin->setCity('Paris');
+        $admin->setIsVerified(true);
         $admin->setPassword(
             $this->passwordEncoder->hashPassword($admin, 'admin')
         );
@@ -37,11 +39,13 @@ class UsersFixtures extends Fixture
         for($usr = 1; $usr <= 5; $usr++){
             $user = new Users();
             $user->setEmail($faker->email);
+            $user->setPhone($faker->phoneNumber);
             $user->setLastname($faker->lastName);
             $user->setFirstname($faker->firstName);
             $user->setAddress($faker->streetAddress);
             $user->setZipcode(str_replace(' ', '', $faker->postcode));
             $user->setCity($faker->city);
+            $user->setIsVerified(true);
             $user->setPassword(
                 $this->passwordEncoder->hashPassword($user, 'secret')
             );
