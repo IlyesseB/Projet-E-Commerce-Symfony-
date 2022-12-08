@@ -21,6 +21,11 @@ class ImagesFixtures extends Fixture implements DependentFixtureInterface
             $image->setProducts($product);
             $manager->persist($image);
         }
+        $image = new Images();
+            $image->setName("gaming.jpg");
+            $product = $this->getReference('prod-69');
+            $image->setProducts($product);
+            $manager->persist($image);
 
         $manager->flush();
     }

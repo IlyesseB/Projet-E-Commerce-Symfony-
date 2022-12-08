@@ -33,6 +33,20 @@ class ProductsFixtures extends Fixture
             $this->setReference('prod-'.$prod, $product);
             $manager->persist($product);
         }
+        $product = new Products();
+        $product->setName('MSI 29.5" LED - Optix MAG301CR2');
+        $product->setDescription('2560 x 1080 pixels - 1 ms (MPRT) - 21/9 - Dalle VA incurvée - 200 Hz - RGB - FreeSync - HDMI/DisplayPort/USB-C');
+        $product->setSlug($this->slugger->slug($product->getName())->lower());
+        $product->setPrice(89598);
+        $product->setStock(7);
+        $product->setPoid(27);
+
+        //On va chercher une référence de catégorie
+        $category = $this->getReference('cat-'. 3);
+        $product->setCategories($category);
+
+        $this->setReference('prod-69', $product);
+        $manager->persist($product);
 
         $manager->flush();
     }
